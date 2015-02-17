@@ -1,18 +1,20 @@
 define([
 	"cldr",
 	"src/date/expand-pattern",
-	"json!fixtures/cldr/main/en/ca-gregorian.json",
-	"json!fixtures/cldr/supplemental/likelySubtags.json"
+	"json!cldr-data/main/en/ca-gregorian.json",
+	"json!cldr-data/supplemental/likelySubtags.json",
+
+	"cldr/event",
+	"cldr/supplemental"
 ], function( Cldr, expandPattern, enCaGregorian, likelySubtags ) {
 
 var cldr;
 
-Cldr.load( enCaGregorian );
-Cldr.load( likelySubtags );
+Cldr.load( enCaGregorian, likelySubtags );
 
 cldr = new Cldr( "en" );
 
-QUnit.module( "Datetime Expand Pattern" );
+QUnit.module( "Date Expand Pattern" );
 
 QUnit.test( "should expand skeleton \"<skeleton>\" (as a String)", function( assert ) {
 	assert.equal( expandPattern( "GyMMMEd", cldr ), "E, MMM d, y G" );

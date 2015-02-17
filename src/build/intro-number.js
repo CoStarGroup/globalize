@@ -1,4 +1,4 @@
-/*!
+/**
  * Globalize v@VERSION
  *
  * http://github.com/jquery/globalize
@@ -9,6 +9,10 @@
  *
  * Date: @DATE
  */
+/*!
+ * Globalize v@VERSION @DATE Released under the MIT license
+ * http://git.io/TrdQbw
+ */
 (function( root, factory ) {
 
 	// UMD returnExports
@@ -18,7 +22,8 @@
 		define([
 			"cldr",
 			"../globalize",
-			"cldr/event"
+			"cldr/event",
+			"cldr/supplemental"
 		], factory );
 	} else if ( typeof exports === "object" ) {
 
@@ -31,9 +36,13 @@
 	}
 }(this, function( Cldr, Globalize ) {
 
-var validateCldr = Globalize._validateCldr,
+var createError = Globalize._createError,
+	objectExtend = Globalize._objectExtend,
+	regexpEscape = Globalize._regexpEscape,
+	stringPad = Globalize._stringPad,
+	validateCldr = Globalize._validateCldr,
 	validateDefaultLocale = Globalize._validateDefaultLocale,
-	validatePresence = Globalize._validatePresence,
-	validateRange = Globalize._validateRange,
-	validateType = Globalize._validateType,
-	validateTypePlainObject = Globalize._validateTypePlainObject;
+	validateParameterPresence = Globalize._validateParameterPresence,
+	validateParameterRange = Globalize._validateParameterRange,
+	validateParameterType = Globalize._validateParameterType,
+	validateParameterTypePlainObject = Globalize._validateParameterTypePlainObject;

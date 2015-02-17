@@ -1,4 +1,4 @@
-/*!
+/**
  * Globalize v@VERSION
  *
  * http://github.com/jquery/globalize
@@ -9,6 +9,10 @@
  *
  * Date: @DATE
  */
+/*!
+ * Globalize v@VERSION @DATE Released under the MIT license
+ * http://git.io/TrdQbw
+ */
 (function( root, factory ) {
 
 	// UMD returnExports
@@ -18,6 +22,7 @@
 		define([
 			"cldr",
 			"../globalize",
+			"./number",
 			"cldr/event",
 			"cldr/supplemental"
 		], factory );
@@ -32,11 +37,15 @@
 	}
 }(this, function( Cldr, Globalize ) {
 
-var alwaysArray = Globalize._alwaysArray,
-	createError = Globalize._createError,
+var createError = Globalize._createError,
+	createErrorUnsupportedFeature = Globalize._createErrorUnsupportedFeature,
 	formatMessage = Globalize._formatMessage,
 	isPlainObject = Globalize._isPlainObject,
+	numberSymbol = Globalize._numberSymbol,
+	regexpEscape = Globalize._regexpEscape,
+	stringPad = Globalize._stringPad,
 	validateCldr = Globalize._validateCldr,
 	validateDefaultLocale = Globalize._validateDefaultLocale,
-	validatePresence = Globalize._validatePresence,
-	validateType = Globalize._validateType;
+	validateParameterPresence = Globalize._validateParameterPresence,
+	validateParameterType = Globalize._validateParameterType,
+	validateParameterTypeString = Globalize._validateParameterTypeString;

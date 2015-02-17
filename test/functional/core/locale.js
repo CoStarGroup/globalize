@@ -1,12 +1,13 @@
 define([
 	"globalize",
-	"../util",
+	"../../util",
+
 	"globalize/date",
 	"globalize/message",
 	"globalize/number"
 ], function( Globalize, util ) {
 
-QUnit.module( "Globalize.locale()" );
+QUnit.module( "Globalize.locale( [locale|cldr] )" );
 
 QUnit.test( "should validate parameters", function( assert ) {
 	util.assertLocaleOrNullParameter( assert, "locale", function( invalidValue ) {
@@ -17,6 +18,10 @@ QUnit.test( "should validate parameters", function( assert ) {
 });
 
 QUnit.test( "should validate whether default locale is defined on static calls", function( assert ) {
+
+	// Ensure default locale is not set.
+	delete Globalize.cldr;
+
 	util.assertDefaultLocalePresence( assert, function() {
 		Globalize.formatDate( new Date(), "GyMMMEd" );
 	});
@@ -34,7 +39,7 @@ QUnit.test( "should validate whether default locale is defined on static calls",
 	});
 
 	util.assertDefaultLocalePresence( assert, function() {
-		Globalize.translate( "amen" );
+		Globalize.formatMessage( "amen" );
 	});
 });
 
